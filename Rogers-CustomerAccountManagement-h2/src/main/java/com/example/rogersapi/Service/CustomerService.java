@@ -22,7 +22,6 @@ import java.util.Map;
 import java.util.Optional;
 
 @Service
-
 public class CustomerService {
 
     private final RogersCustomerAccountManagementH2Application rogersCustomerAccountManagementH2Application;
@@ -96,7 +95,7 @@ public class CustomerService {
 		 customer.setLongitude(place.getLongitude());
 	}
 
-	//Going to create an random AccountId which is in Alphanumeric form
+	//Going to create a random AccountId which is in Alphanumeric form
 	public String customerAccountIdGeneration() {
 		StringBuilder sb= new StringBuilder(6);
 		for(int i=0;i<6;i++)
@@ -105,16 +104,10 @@ public class CustomerService {
 		}
 		return sb.toString();
 	}
-  //Going to create a random 4 digit pin fro customer
+  //Going to create a random 4 digit pin for customer
 	public int customerAccountPinGeneration() {
 	    return randomNumber.nextInt(10000);
 	}
-	
-//	public Optional<Customer> getByEmailOrAccountId(String email, String accountId) {
-//        if (email != null) return repository.findByEmail(email);
-//        if (accountId != null) return repository.findByAccountId(accountId);
-//        return Optional.empty();
-//    }
 
 	//Input Validation for update operation
 	private void validateUpdateFields(Customer existing, Customer updates) {
@@ -157,7 +150,7 @@ public class CustomerService {
 	        throw new IllegalArgumentException("Only ACTIVE accounts can be updated");
 	    }
 
-	   //Funtion call to validate the update fields
+	   //Function call to validate the update fields
 	    validateUpdateFields(existing, updates);
 
 	    
@@ -171,7 +164,7 @@ public class CustomerService {
 	        locationChanged = true;
 	    }
 	    if (locationChanged) {
-	        populatePlaceDetails(existing); // API call to fetch Place details .
+	        populatePlaceDetails(existing); // Fucntion call to fetch Place details .
 	    }
 
 	    
@@ -194,7 +187,7 @@ public class CustomerService {
         repository.save(customer);
     }
     
-    //Delete customer
+    //Delete customer , we have to pass account id and pin
 
     public void deleteCustomer(String accountId, int pin) {
         Customer existing = repository.findByAccountId(accountId).orElseThrow(() ->

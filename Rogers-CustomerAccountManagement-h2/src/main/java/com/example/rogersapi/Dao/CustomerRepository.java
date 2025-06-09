@@ -16,7 +16,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	 Optional<Customer> findByEmail(String email);
 	 Optional<Customer> findByAccountId(String accountId);
 	 
-	 @Query("SELECT c FROM Customer c WHERE c.country = :country")
+	 	@Query("SELECT c FROM Customer c WHERE c.country = :country")
 	    List<Customer> findByCountry(@Param("country") Country country);
 
 	    @Query("SELECT c.stateAbbreviation as state, c.placeName as place, COUNT(c) as count " +

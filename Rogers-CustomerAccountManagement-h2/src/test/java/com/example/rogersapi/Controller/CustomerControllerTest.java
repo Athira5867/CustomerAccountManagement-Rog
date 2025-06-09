@@ -162,7 +162,7 @@ public class CustomerControllerTest {
                 .andExpect(jsonPath("$.states").isArray());
     }
     
-    //AM going to handle some failure scenarios
+    //Failure scenarios
     @Test
     public void createCustomer_InvalidEmail_ShouldReturnBadRequest() throws Exception {
         CustomerRequest invalidRequest = new CustomerRequest();
@@ -208,7 +208,7 @@ public class CustomerControllerTest {
         updateRequest.setStatus(Status.ACTIVE);
         updateRequest.setAge(40);
 
-        // Mock service to throw exception for invalid accountId
+        
         when(customerService.updateCustomer(eq("AAGGHH"), any(Customer.class)))
             .thenThrow(new IllegalArgumentException("Customer not found for update"));
 
@@ -225,7 +225,7 @@ public class CustomerControllerTest {
         String accountId = "someAccountId";
         int wrongPin = 1111;
 
-        // Mock service to throw exception for invalid PIN
+        
         doThrow(new IllegalArgumentException("Invalid PIN"))
             .when(customerService).deleteCustomer(accountId, wrongPin);
 
@@ -252,7 +252,7 @@ public class CustomerControllerTest {
         request.setAccountId("AABBHH");
         request.setStatus(Status.ACTIVE);
 
-        // Mock service to throw exception when updating non-existent customer
+        
         doThrow(new IllegalArgumentException("Customer not found with accountId"))
             .when(customerService).updateStatus("AABBHH", Status.ACTIVE);
 

@@ -26,7 +26,7 @@ public class CustomerRequest {
     @Min(value = 0, message = "Age must be positive")
     private int age;
 
-    // Getters and Setters
+    
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 

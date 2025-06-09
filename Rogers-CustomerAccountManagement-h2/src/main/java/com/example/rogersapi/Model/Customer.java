@@ -21,10 +21,10 @@ public class Customer {
 	private Country country;
 	
 	private String postalCode;
-	private Integer age; // Optional field
+	private Integer age;
 	
 	@Enumerated(EnumType.STRING)
-	private Status status; // active,inactive or requested
+	private Status status;
 
 	private String placeName;
 	private String stateAbbreviation;
@@ -34,7 +34,7 @@ public class Customer {
 	private String accountId;
 	private int pin;
 
-	 // Constructor
+	
     public Customer(String name, String email, Country country, String postalCode, Status status, Integer age) {
         this.name = name;
         this.email = email;
@@ -47,7 +47,7 @@ public class Customer {
     public Customer() {
     }
 
-    // Getters and Setters
+    
     public int getId() {
         return id;
     }
